@@ -2,8 +2,12 @@ package com.thoughtworks.collection;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class MyMap {
 
@@ -17,18 +21,23 @@ public class MyMap {
     }
 
     public List<Integer> getTriple() {
-        throw new NotImplementedException();
+        return array.stream().map(number -> number * 3).collect(Collectors.toList());
     }
 
     public List<String> mapLetter() {
-        throw new NotImplementedException();
+        int STARTING_CHARACTER = 96;
+        return array.stream().map(number -> (char)(number + STARTING_CHARACTER) + "").collect(Collectors.toList());
     }
 
     public List<Integer> sortFromBig() {
-        throw new NotImplementedException();
+        List<Integer> sortedArray = new ArrayList<>(array);
+        sortedArray.sort(Collections.reverseOrder());
+        return sortedArray;
     }
 
     public List<Integer> sortFromSmall() {
-        throw new NotImplementedException();
+        List<Integer> sortedArray = new ArrayList<>(array);
+        Collections.sort(sortedArray);
+        return sortedArray;
     }
 }
